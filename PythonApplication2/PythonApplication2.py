@@ -1,12 +1,12 @@
 # 1. Structure Overview
 # Create a custom class representing a node [cite: 6]
 class Node:
-    def __init__(self, value):
+    def __init__(node, value):
         # Rule: Each node must contain exactly three attributes [cite: 6]
-        self.center_value = value  # the number stored in this node [cite: 7]
-        self.left_node = None      # another node or None [cite: 8]
-        self.right_node = None     # another node or None [cite: 9]     
-        self.height = 1 
+        node.center_value = value  # the number stored in this node [cite: 7]
+        node.left_node = None      # another node or None [cite: 8]
+        node.right_node = None     # another node or None [cite: 9]     
+        node.height = 1 
 
 def get_height(thing):
     # Returns 0 if empty, otherwise returns the stored height [cite: 46]
