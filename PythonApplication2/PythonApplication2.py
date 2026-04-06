@@ -53,20 +53,16 @@ def insert(item, value):
 
     balance = get_balance(item)
     
-    # CASE 1: Left-Left (Single Rotation)
     if balance > 1 and value < item.left_node.center_value:
         return rotate_right(item)
 
-    # CASE 2: Right-Right (Single Rotation)
     if balance < -1 and value > item.right_node.center_value:
         return rotate_left(item)
 
-    # CASE 3: Left-Right (Double Rotation: Zig-zag pattern) [cite: 43, 44]
     if balance > 1 and value > item.left_node.center_value:
         item.left_node = rotate_left(item.left_node)
         return rotate_right(item)
 
-    # CASE 4: Right-Left (Double Rotation: Zig-zag pattern) [cite: 43, 44]
     if balance < -1 and value < item.right_node.center_value:
         item.right_node = rotate_right(item.right_node)
         return rotate_left(item)
@@ -89,6 +85,7 @@ def find_min(item):
     return current.center_value
 
 def find_max(item):
+    # E. Find the highest value: Traverse right until no more exist [cite: 29, 31]
     current = item
     while current.right_node is not None:
         current = current.right_node
@@ -97,8 +94,8 @@ def find_max(item):
 if __name__ == "__main__":
     root = None
     
-    print("--- Self-Balancing Recursive Structure ---")
-    print("Enter numeric values to build your tree.")
+    print("\n---------------------------------------\n")
+    print("Enter numeric values to build the tree.")
     print("Type 'done' when you are finished.")
 
     while True:
@@ -119,15 +116,13 @@ if __name__ == "__main__":
                 holding = "Balanced"
             
             print(f"Inserted {val}. Current Root: {root.center_value}")
-            print(f"Status: Holding {holding} (Balance Factor: {balance})")
-            # --------------------------------------------
+            print(f"Status: Holding {holding} (Balance: {balance})")
 
         except ValueError:
             print("Please enter a valid integer.")
 
-    # Demonstration of final statistics
     if root:
-        print("\n--- Final Structure Statistics ---")
+        print("\n---------------------------------------")
         print(f"Root center_value: {root.center_value}")
         print(f"Lowest Value found: {find_min(root)}")
         print(f"Highest Value found: {find_max(root)}")
