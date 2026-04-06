@@ -85,7 +85,6 @@ def find_min(item):
     return current.center_value
 
 def find_max(item):
-    # E. Find the highest value: Traverse right until no more exist [cite: 29, 31]
     current = item
     while current.right_node is not None:
         current = current.right_node
